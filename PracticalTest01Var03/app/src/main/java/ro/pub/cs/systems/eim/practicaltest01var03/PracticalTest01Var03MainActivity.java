@@ -1,10 +1,12 @@
 package ro.pub.cs.systems.eim.practicaltest01var03;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,6 +68,24 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), PracticalTest01Var03SecondaryActivity.class);
             intent.putExtra("textView", textView.getText().toString());
             startActivityForResult(intent, 1998);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        /*String s = "AJUNGEEE AICIIII";
+        Log.i("activitylifecycle", "AJUNGEEE AICIIII\n\n\n\nAAAAAAAAA");*/
+        if(requestCode == 1998) {
+            if (resultCode == RESULT_OK) {
+                String s = "AJUNGEEE AICIIII";
+                Log.i("activitylifecycle", "AJUNGEEE AICIIII\n\n\n\nAAAAAAAAA");
+                Toast.makeText(getApplicationContext(),"Rezultat corect",Toast.LENGTH_SHORT).show();
+            } else {
+                String s = "AJUNGEEE AICIIII";
+                Log.i("activitylifecycle", "AJUNGEEE AICIIII\n\n\n\nBBBBBBB");
+                Toast.makeText(getApplicationContext(),"Rezultat Incorect",Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

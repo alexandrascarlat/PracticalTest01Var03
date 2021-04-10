@@ -23,12 +23,10 @@ public class PracticalTest01Var03SecondaryActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.buttonCorrect:
-                    Intent intentOk = new Intent(getApplicationContext(), PracticalTest01Var03MainActivity.class);
-                    Toast.makeText(getApplicationContext(),"Rezultat corect",Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK, null);
                     break;
                 case R.id.buttonIncorrect:
-                    Intent intentWrong = new Intent(getApplicationContext(), PracticalTest01Var03MainActivity.class);
-                    Toast.makeText(getApplicationContext(),"Rezultat Incorect",Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_CANCELED, null);
                     break;
             }
             finish();
