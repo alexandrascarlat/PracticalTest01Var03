@@ -3,6 +3,7 @@ package ro.pub.cs.systems.eim.practicaltest01var03;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
 
     private Button buttonPlus;
     private Button buttonMinus;
+    private Button buttonNavigate;
 
     private EditText editText1;
     private EditText editText2;
@@ -57,6 +59,16 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
         }
     }
 
+    private NavigateButtonClickListener navigateButtonClickListener = new NavigateButtonClickListener();
+    private class NavigateButtonClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(), PracticalTest01Var03SecondaryActivity.class);
+            intent.putExtra("textView", textView.getText().toString());
+            startActivityForResult(intent, 1998);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +83,10 @@ public class PracticalTest01Var03MainActivity extends AppCompatActivity {
 
         buttonMinus = (Button)findViewById(R.id.buttonMinus);
         buttonMinus.setOnClickListener(minusButtonClickListener);
+
+        buttonNavigate = (Button)findViewById(R.id.secondActivity);
+        buttonNavigate.setOnClickListener(navigateButtonClickListener);
+
 
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey("textView")) {
